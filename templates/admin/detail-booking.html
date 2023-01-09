@@ -1,0 +1,45 @@
+{% include 'admin/header.html' %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Data Detail Booking</h1>
+        </div>
+    </div>
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Id Booking: {{book.id_booking}}</h3>
+
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <div class="form-control">{{book.tanggal}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Email</label>
+                        <div class="form-control">{{book.email}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Jam Mulai</label>
+                        <div class="form-control">{{book.jam_mulai}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Jam Akhir</label>
+                        <div class="form-control">{{book.jam_akhir}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Jam Akhir</label>
+                        <div class="form-control">{{book.isi_slot}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- MAIN -->
+{% include "admin/footer.html" %}

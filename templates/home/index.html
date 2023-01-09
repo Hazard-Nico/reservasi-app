@@ -1,0 +1,87 @@
+{% include "home/header.html" %}
+<header>
+  <!-- place navbar here -->
+</header>
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="text-center mt-5" size="50" style="background-color: rgb(66, 71, 70)">
+          <h1 style="color: #fff">
+            Select Date and Time for your reservation
+          </h1>
+        </div>
+        <div class="datefield mb-5">
+          <form action="#" method="post">
+            <div class="row">
+
+              <div class="col-md-3">
+                <label>Date</label>
+                <input type="text" class="form-control" id="datedropper" />
+              </div>
+              <div class="col-md-3">
+                <label>Time</label> <input type="time" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>People</label>
+                <input type="number" name="people" id="people" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>Search</label>
+                <button type="submit" class="btn btn-primary pro-button w-100">
+                  Check a Availability
+                </button>
+              </div>
+
+            </div>
+          </form>
+          <div class="row wrapper">
+            <div class="avail-table">
+
+              {% for tables in meja %}
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">1</label>
+              <img src="../../static/assets/attr/4-circle.svg" alt="" sizes="20" srcset="" width="255" />
+              <!-- <input type="checkbox" name="table" id="table" />
+              <label for="table">2</label>
+              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">3</label>
+              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
+
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">4</label>
+              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">5</label>
+              <img src="../../static/assets/attr/4-circle.svg" alt="" sizes="20" srcset="" width="255" />
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">6</label>
+              <img src="../../static/assets/attr/8-circle.svg" alt="" sizes="20" srcset="" width="255" />
+
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">7</label>
+              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
+                style="transform: rotate(-90deg)" />
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">8</label>
+              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
+                style="transform: rotate(-90deg)" />
+              <input type="checkbox" name="table" id="table" />
+              <label for="table">9</label>
+              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
+                style="transform: rotate(-90deg)" /> -->
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</main>
+<footer>
+  <!-- place footer here -->
+</footer>
+{% include "home/footer.html" %}

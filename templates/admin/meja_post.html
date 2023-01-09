@@ -1,0 +1,45 @@
+{% include 'admin/header.html' %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Form Input Meja</h1>
+        </div>
+    </div>
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Form Input Data Meja</h3>
+
+
+            </div>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="no_meja" class="form-label">No. Meja</label>
+                    <input type="text" name="no_meja" id="no_meja" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="slot_kursi" class="form-label">Slot Kursi</label>
+                    <select class="form-select form-select-lg" name="slot_kursi" id="slot_kursi">
+                        <option selected>Select one</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tipe_meja" class="form-label">Tipe Meja</label>
+                    <select class="form-select form-select-lg" name="tipe_meja" id="tipe_meja">
+                        <option selected>Select one</option>
+                        <option value="circle">Lingkaran</option>
+                        <option value="rect">Kotak</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan Data</button>
+            </form>
+        </div>
+    </div>
+</main>
+<!-- MAIN -->
+{% include "admin/footer.html" %}

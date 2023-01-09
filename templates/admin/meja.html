@@ -1,0 +1,48 @@
+{% include 'admin/header.html' %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Data Meja</h1>
+        </div>
+        <a href="#" class="btn-download">
+            <i class='bx bxs-cloud-download'></i>
+            <span class="text">Download PDF</span>
+        </a>
+    </div>
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Recent Orders</h3>
+
+                <a href="{{url_for('input_meja')}}" class="btn btn-primary">
+                    <i class='bx bxs-plus'></i>
+                    <span class="text">Buat Meja Baru</span>
+                </a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No. Meja</th>
+                        <th>Slot Kursi</th>
+                        <th>Bentuk Meja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for table in meja %}
+                    <tr>
+                        <td>
+                            <p>{{table.no_meja}}</p>
+                        </td>
+                        <td>{{table.slot_kursi}}</td>
+                        <td><img src="{{url_for('static', filename='assets/attr/' + table.tipe_meja)}}" alt=""></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<!-- MAIN -->
+{% include "admin/footer.html" %}

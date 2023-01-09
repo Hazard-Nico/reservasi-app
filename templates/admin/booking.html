@@ -1,0 +1,101 @@
+{% include 'admin/header.html' %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Data Booking</h1>
+        </div>
+        <a href="#" class="btn-download">
+            <i class='bx bxs-cloud-download'></i>
+            <span class="text">Download PDF</span>
+        </a>
+    </div>
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Recent Orders</h3>
+
+                <a href="{{url_for('booking')}}" class="btn btn-primary">
+                    <i class='bx bxs-plus'></i>
+                    <span class="text">Buat Data Booking Baru</span>
+                </a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email User</th>
+                        <th>Date Booking</th>
+                        <th>Waktu Mulai</th>
+                        <th>Waktu Akhir</th>
+                        <th>Isi Slot</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for books in booking %}
+                    <tr>
+                        <td>
+                            <p>{{books.email}}</p>
+                        </td>
+                        <td>{{books.tanggal}}</td>
+                        <td>{{books.jam_mulai}}</td>
+                        <td>{{books.jam_akhir}}</td>
+                        <td>{{books.isi_slot}}</td>
+                        <td>
+                            {% if books.tanggal == datetime and books.jam_akhir <= datetime %} <span
+                                class="status completed">Completed</span>
+                                {% elif books.tanggal == datetime and books.jam_mulai <= datetime and books.jam_akhir>
+                                    datetime %}
+                                    <span class="status process">Process</span>
+                                    {% else %}
+                                    <span class="status pending">Pending</span>
+                                    {% endif %}
+                        </td>
+                        <td>
+
+                            <a href="{{url_for('detail_booking', id=books.id_booking)}}"
+                                class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                        <td>
+                            <img src="img/people.png">
+                            <p>John Doe</p>
+                        </td>
+                        <td>01-10-2021</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="img/people.png">
+                            <p>John Doe</p>
+                        </td>
+                        <td>01-10-2021</td>
+                        <td><span class="status process">Process</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="img/people.png">
+                            <p>John Doe</p>
+                        </td>
+                        <td>01-10-2021</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="img/people.png">
+                            <p>John Doe</p>
+                        </td>
+                        <td>01-10-2021</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<!-- MAIN -->
+{% include "admin/footer.html" %}

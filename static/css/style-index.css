@@ -1,0 +1,141 @@
+/*  */
+/*  */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: grid;
+  font-family: "Manrope", sans-serif;
+}
+.mt-100 {
+  margin-top: 100px;
+}
+.datefield {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 6px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+}
+
+.reserve-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+}
+
+.form-control[readonly] {
+  background-color: #f44336;
+  opacity: 1;
+  color: #fff;
+  border: 1px solid #f44336;
+}
+.pro-button {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+.pro-button:focus {
+  outline: none !important;
+  background-color: #f44336;
+  border-color: #f44336;
+  box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
+}
+.pro-button:active {
+  outline: none !important;
+  background-color: #f44336 !important;
+  border-color: #f44336 !important;
+}
+.pro-button:hover {
+  background-color: #d8271a;
+  border-color: #d8271a;
+}
+label {
+  font-weight: 800;
+}
+
+.wrapper {
+  width: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  gap: 15px;
+}
+
+.avail-table {
+  height: 200px;
+  width: 200px;
+  background-color: #ffffff;
+  box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.avail-table img {
+  width: 70%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+input[type="checkbox"]:after {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f111";
+  font-size: 18px;
+  color: #478bfb;
+  right: 10px;
+  top: -5px;
+}
+input[type="checkbox"]:checked:after {
+  font-weight: 900;
+  content: "\f058";
+  color: #478bfb;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style-login.css')}}">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-form">
+        <img src="{{url_for('static', filename='assets/images/undraw_female_avatar_re_l6cx.svg')}}" alt=""
+            class="avatar">
+        <p id="jam" style="text-align: center;"></p>
+        <p id="tampilkan" style="text-align: center;"></p>
+        <br>
+        <h2>Login Form</h2>
+        <form method="post" action="#" id="myForm">
+            <p>Username</p>
+            <input type="text" id="username" name="username" placeholder="Enter Username..." required="required" value="{{
+                request.form.username }}">
+            <p>Password</p>
+            <input type="password" id="password" name="password" placeholder="Enter Password..." required="required"
+                value="{{
+                request.form.password }}">
+
+
+            <button type="submit" id="login-button" name="login-button">Login</button>
+            {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+                {% endif %}
+        </form>
+    </div>
+</body>
+<script src="js/jquery-3.6.1.min.js"></script>
+<script>
+
+
+    let date = new Date()
+    let hari;
+    switch (date.getDay()) {
+        case 0:
+            hari = "Minggu";
+            break;
+        case 1:
+            hari = "Senin";
+            break;
+        case 2:
+            hari = "Selasa";
+            break;
+        case 3:
+            hari = "Rabu";
+            break;
+        case 4:
+            hari = "Kamis";
+            break;
+        case 5:
+            hari = "Jumat";
+            break;
+        case 6:
+            hari = "Sabtu";
+            break;
+    }
+
+
+    let bulan;
+    switch (date.getMonth()) {
+        case 0:
+            bulan = "januari";
+            break;
+        case 1:
+            bulan = "Februari";
+            break;
+        case 2:
+            bulan = "Maret";
+            break;
+        case 3:
+            bulan = "April";
+            break;
+        case 4:
+            bulan = "Mei";
+            break;
+        case 5:
+            bulan = "Juni";
+            break;
+        case 6:
+            bulan = "Juli";
+            break;
+        case 7:
+            bulan = "Agustus";
+            break;
+        case 8:
+            bulan = "September";
+            break;
+        case 9:
+            bulan = "Oktober";
+            break;
+        case 10:
+            bulan = "November";
+            break;
+        case 11:
+            bulan = "Desember";
+            break;
+    }
+
+
+    document.getElementById("jam").innerHTML = ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+    document.getElementById("tampilkan").innerHTML = hari + ", " + date.getDate() + " " + bulan + " " + date.getFullYear();
+</script>
+
+</html>
