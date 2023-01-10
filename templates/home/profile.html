@@ -1,0 +1,67 @@
+{%include 'home/header.html' %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="img-fluid rounded-start text-center"
+                            src="{{ url_for('static', filename='assets/images/vector.png') }}">
+                        <br>
+                        <h1 class="text-center">{{user.name}}</h1>
+                        <p class="text-center"> {{user.email}} </p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date Booking</th>
+                                        <th>Waktu Mulai</th>
+                                        <th>Waktu Akhir</th>
+                                        <th>Isi Slot</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- {% for books in booking %} -->
+                                    <tr>
+                                        <td>{{books.tanggal}}</td>
+                                        <td>{{books.jam_mulai}}</td>
+                                        <td>{{books.jam_akhir}}</td>
+                                        <td>{{books.isi_slot}}</td>
+                                        <td>
+                                            {% if books.tanggal == datetime and books.jam_akhir <= datetime %} <span
+                                                class="btn btn-primary">Completed</span>
+                                                {% elif books.tanggal == datetime and books.jam_mulai <= datetime and
+                                                    books.jam_akhir>
+                                                    datetime %}
+                                                    <span class="btn btn-success">Process</span>
+                                                    {% else %}
+                                                    <span class="btn btn-warning">Pending</span>
+                                                    {% endif %}
+                                        </td>
+                                        <td>
+
+                                            <a href="{{url_for('detail_profile', id=books.id_booking)}}"
+                                                class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                    <!-- {% endfor %} -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include "home/footer.html" %}

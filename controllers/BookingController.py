@@ -36,3 +36,4 @@ def book():
         db.session.commit()
     print('You were successfully submit')
     return redirect('/')
+

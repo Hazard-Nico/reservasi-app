@@ -15,6 +15,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- Boxicons -->
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  
 </head>
 
 <body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand"><i class='bx bxs-food-menu'></i> Reservasi</a>
+        <div class="d-flex">
+
+          {% if 'user' in session %}
+          <a href="{{url_for('profile')}}" class="btn btn-outline-primary me-2">Profile</a>
+          <a href="{{url_for('logout')}}" class="btn btn-outline-danger">Logout</a>
+          {% else %}
+          <a href="{{url_for('register')}}" class="btn btn-outline-primary me-2">Sign Up</a>
+          <a href="{{url_for('login')}}" class="btn btn-outline-success">Sign In</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </header>

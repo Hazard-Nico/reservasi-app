@@ -1,20 +1,5 @@
 {% include "home/header.html" %}
-<header>
-  <!-- place navbar here -->
-  <nav class="navbar bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand"><i class='bx bxs-food-menu'></i> Reservasi</a>
-      <div class="d-flex">
-        {% if 'user' in session %}
-        <a href="{{url_for('logout')}}" class="btn btn-outline-warning">Logout</a>
-        {% else %}
-        <a href="{{url_for('register')}}" class="btn btn-outline-primary me-2">Sign Up</a>
-        <a href="{{url_for('login')}}" class="btn btn-outline-success">Sign In</a>
-        {% endif %}
-      </div>
-    </div>
-  </nav>
-</header>
+
 <main>
   <div class="container-fluid">
     <div class="row">

@@ -1,5 +1,6 @@
 from models.Admin import Admin
 from models.Booking import Booking
+from models.Detail_booking import Detail_booking
 from models.Meja import Meja
 from app import app, db
 from datetime import datetime, timedelta, date, time
@@ -20,8 +21,8 @@ def login():
         if not user.checkPassword(password):
             return render_template('admin/login.html', error="Kombinasi Password Salah")
         else:
-            session['userid'] = user.id
-            print(session['userid'])  
+            session['admin'] = user.email
+            print(session['admin'])  
             return redirect('/admin/dashboard')
         
 def register():
@@ -65,7 +66,8 @@ def booking_data():
 
 def detail_booking(id):
     book = Booking.query.filter_by(id_booking = id).first()
-    return render_template('admin/detail-booking.html', book=book)
+    meja = Detail_booking.query.filter_by(id_booking = book.id_booking)
+    return render_template('admin/detail-booking.html', book=book, meja=meja)
 
 
 def booking():

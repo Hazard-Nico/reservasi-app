@@ -35,6 +35,60 @@
                         <label for="tanggal">Jam Akhir</label>
                         <div class="form-control">{{book.isi_slot}}</div>
                     </div>
+                    <div class="form-group">
+                        <label for="">Nomor Meja: </label>
+                        {% for table in meja %}
+                        <label for="table">{{table.id_meja,}}</label>
+                        {% endfor %}
+                    </div>
+
+                    <div class="container">
+                        <p class="my-5 mx-5" style="font-size: 30px;">Terima kasih sudah mem-booking</p>
+                        <div class="row">
+                            <ul class="list-unstyled">
+                                <li class="text-black">{{book.email}}</li>
+                                <li class="text-black mt-1">{{book.tanggal}}</li>
+                            </ul>
+                            <hr>
+                            <div class="col-xl-10">
+                                <p>Pro Package</p>
+                            </div>
+                            <div class="col-xl-2">
+                                <p class="float-end">$199.00
+                                </p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-10">
+                                <p>Consulting</p>
+                            </div>
+                            <div class="col-xl-2">
+                                <p class="float-end">$100.00
+                                </p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-10">
+                                <p>Support</p>
+                            </div>
+                            <div class="col-xl-2">
+                                <p class="float-end">$10.00
+                                </p>
+                            </div>
+                            <hr style="border: 2px solid black;">
+                        </div>
+                        <div class="row text-black">
+
+                            <div class="col-xl-12">
+                                <p class="float-end fw-bold">Total: $10.00
+                                </p>
+                            </div>
+                            <hr style="border: 2px solid black;">
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

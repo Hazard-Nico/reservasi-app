@@ -55,7 +55,10 @@
                                 {% if error %}
                                 <p class="error"><strong>Error:</strong> {{ error }}
                                     {% endif %}
+                                <p>Already have a account?</p>
+                                <a href="{{url_for('login')}}" class="btn btn-primary btn-block">Sign In</a>
                             </form>
+
                         </div>
                     </div>
                 </div>

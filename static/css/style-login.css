@@ -83,6 +83,25 @@ body:before {
   transition: 0.4s;
 }
 
+.register-button {
+  text-decoration: none;
+  height: 30px;
+  color: #fff;
+  font-size: 15px;
+  background: #3d535f;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  margin-top: 15%;
+}
+
+.register-button:hover {
+  background-color: #4573f3;
+  transform: scale(1.2);
+  transition: 0.4s;
+}
+
 input[type="checkbox"] {
   width: 20px;
 }
