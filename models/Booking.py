@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 class Booking(db.Model):
     id_booking = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(250), nullable=False, index=True, unique=True)
+    email = db.Column(db.String(250), nullable=False)
     tanggal = db.Column(db.Date, nullable=False)
     jam_mulai = db.Column(db.Time, nullable=False)
     jam_akhir = db.Column(db.Time, nullable=False)

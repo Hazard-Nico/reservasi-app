@@ -17,8 +17,8 @@ def login():
         if not user.checkPassword(password):
             return render_template('login/login2.html', error="Kombinasi Password Salah")
         else:
-            session['userid'] = user.id
-            print(session['userid'])  
+            session['user'] = user.email
+            print(session['user'])  
             return redirect('/')
         
 def register():

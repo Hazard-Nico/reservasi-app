@@ -6,47 +6,8 @@
   integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/datedropper.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $("#datedropper").dateDropper({});
-  });
-  var svg = d3.select("svg");
-  var originX = 200;
-  var originY = 200;
-  var innerCircleRadius = 40;
-  var outerCircleRadius = 60;
+<script src="{{url_for('static', filename='js/index.js')}}">
 
-  var table = svg.append("circle").attr({
-    cx: originX,
-    cy: originY,
-    r: innerCircleRadius,
-    fill: "white",
-    stroke: "black",
-  });
-
-  var outerCircle = svg.append("circle").attr({
-    cx: originX,
-    cy: originY,
-    r: outerCircleRadius,
-    fill: "none",
-    stroke: "black",
-  });
-
-  var chairOriginX = originX + outerCircleRadius * Math.sin(0);
-  var chairOriginY = originY + outerCircleRadius * Math.cos(0);
-
-  var chairWidth = 20;
-  var chair = svg.append("rect").attr({
-    x: chairOriginX - chairWidth / 2,
-    y: chairOriginY - chairWidth / 2,
-    width: chairWidth,
-    opacity: 1,
-    height: 20,
-    fill: "none",
-    stroke: "blue",
-  });
-
-  chair.attr("transform", "rotate(45, 200, 200)");
 </script>
 </body>
 

@@ -1,13 +1,21 @@
 from app import app
 from flask import Flask, render_template, request, redirect, url_for, session
-from controllers import UserController, AdminController
+from controllers import UserController, AdminController, BookingController
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     # print(request.form)
     # print(request.form.get("account"))
+    if request.method == 'POST':
+        return BookingController.search()
     return render_template("home/index.html")
+
+@app.route("/checkout", methods=["GET", "POST"])
+def reserve():
+    if request.method =="POST":
+        return BookingController.book()
+    # return render_template("transaction/transaction.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -24,7 +32,7 @@ def register():
 
 @app.route('/logout')
 def logout():
-    session.pop('userid', None)
+    session.pop('user', None)
     return redirect('login')
 
 @app.route("/admin/login", methods=["GET", "POST"])

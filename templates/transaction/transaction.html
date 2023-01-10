@@ -1,31 +1,55 @@
 {% include "transaction/header.html" %}
-    <h1>Add transaction</h1>
-    <form method="POST">
-      <div class="form__fieldset">
-        <label for="date" class="form__label">Date:</label>
-        <input type="date" name="date" id="date" class="form__input" />
-      </div>
+<h1>Add transaction</h1>
+<form method="POST">
+  <div class="form__fieldset">
+    <label for="date" class="form__label">Email:</label>
+    {% if 'user' in session %}
+    <input type="email" name="email" id="date" class="form__input" value="{{
+      session['user'] }}" />
+    {% else %}
+    <input type="email" name="email" id="date" class="form__input" value="{{
+      request.form.email }}" />
+    {% endif %}
+  </div>
+  <div class="form__fieldset">
+    <label for="date" class="form__label">Tanggal:</label>
+    <input type="date" name="tanggal" id="date" class="form__input" value="{{
+      request.form.tanggal }}" />
+  </div>
 
-      <div class="form__fieldset">
-        <label for="amount" class="form__label">Amount:</label>
-        <input type="number" name="amount" id="amount" class="form__input" />
-      </div>
+  <div class="form__fieldset">
+    <label for="date" class="form__label">Jam Mulai:</label>
+    <input type="time" name="jam_mulai" id="date" class="form__input" value="{{
+      request.form.jam_mulai }}" />
+  </div>
 
-      <div class="form__fieldset">
-        <label for="account" class="form__label">Account:</label>
-        <select name="account" id="account" class="form__input form__select">
-          <option value="Checking">Checking</option>
-          <option value="Savings">Savings</option>
-          <option value="Investment">Investment</option>
-        </select>
-      </div>
+  <div class="form__fieldset">
+    <label for="date" class="form__label">Jam Akhir:</label>
+    <input type="time" name="jam_akhir" id="date" class="form__input" value="{{
+      request.form.jam_akhir }}" disabled />
+  </div>
 
-      <div class="form__fieldset">
-        <input
-          class="form__submit form__input"
-          type="submit"
-          value="Add transaction"
-        />
-      </div>
-    </form>
+  <div class="form__fieldset">
+    <label for="date" class="form__label">Meja yang di pesan:</label>
+    {{id_meja}}
+  </div>
+
+  <div class="form__fieldset">
+    <label for="amount" class="form__label">Isi Slot:</label>
+    <input type="number" name="isi_slot" id="amount" class="form__input" value="{{
+      request.form.isi_slot }}" />
+  </div>
+
+  <div class="form__fieldset">
+    <label for="account" class="form__label">Account:</label>
+    <select name="id_pembayaran" id="account" class="form__input form__select">
+      <option value="1">Debit</option>
+      <option value="2">Virtual Account</option>
+    </select>
+  </div>
+
+  <div class="form__fieldset">
+    <input class="form__submit form__input" type="submit" value="Add transaction" />
+  </div>
+</form>
 {% include "transaction/footer.html" %}

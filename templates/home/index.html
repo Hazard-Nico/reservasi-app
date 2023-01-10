@@ -1,6 +1,19 @@
 {% include "home/header.html" %}
 <header>
   <!-- place navbar here -->
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand"><i class='bx bxs-food-menu'></i> Reservasi</a>
+      <div class="d-flex">
+        {% if 'user' in session %}
+        <a href="{{url_for('logout')}}" class="btn btn-outline-warning">Logout</a>
+        {% else %}
+        <a href="{{url_for('register')}}" class="btn btn-outline-primary me-2">Sign Up</a>
+        <a href="{{url_for('login')}}" class="btn btn-outline-success">Sign In</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
 </header>
 <main>
   <div class="container-fluid">
@@ -18,14 +31,17 @@
 
               <div class="col-md-3">
                 <label>Date</label>
-                <input type="text" class="form-control" id="datedropper" />
+                <input type="date" name="tanggal" class="form-control" id="tanggal" value="{{
+                  request.form.tanggal }}" />
               </div>
               <div class="col-md-3">
-                <label>Time</label> <input type="time" class="form-control" />
+                <label>Time</label> <input type="time" name="jam_mulai" class="form-control" value="{{
+                  request.form.jam_mulai }}" />
               </div>
               <div class="col-md-3">
                 <label>People</label>
-                <input type="number" name="people" id="people" class="form-control" />
+                <input type="number" name="isi_slot" id="people" class="form-control" value="{{
+                  request.form.isi_slot }}" />
               </div>
               <div class="col-md-3">
                 <label>Search</label>
@@ -36,44 +52,67 @@
 
             </div>
           </form>
+
           <div class="row wrapper">
             <div class="avail-table">
+              <form action="{{ url_for('reserve') }}" method="post">
 
-              {% for tables in meja %}
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">1</label>
-              <img src="../../static/assets/attr/4-circle.svg" alt="" sizes="20" srcset="" width="255" />
-              <!-- <input type="checkbox" name="table" id="table" />
-              <label for="table">2</label>
-              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">3</label>
-              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
 
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">4</label>
-              <img src="../../static/assets/attr/4-rect.svg" alt="" sizes="20" srcset="" width="255" />
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">5</label>
-              <img src="../../static/assets/attr/4-circle.svg" alt="" sizes="20" srcset="" width="255" />
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">6</label>
-              <img src="../../static/assets/attr/8-circle.svg" alt="" sizes="20" srcset="" width="255" />
+                {% for table in meja %}
 
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">7</label>
-              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
-                style="transform: rotate(-90deg)" />
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">8</label>
-              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
-                style="transform: rotate(-90deg)" />
-              <input type="checkbox" name="table" id="table" />
-              <label for="table">9</label>
-              <img src="../../static/assets/attr/8-rect.svg" alt="" sizes="20" srcset="" width="255"
-                style="transform: rotate(-90deg)" /> -->
-              {% endfor %}
+                {% if tanggal == detail.tanggal and jam_mulai == detail.jam_mulai %}
+                {% if isi_slot
+                <= 4 %} <input type="checkbox" class="checkoption" name="id_meja" id="table" value="{{table.id}}"
+                  disabled />
+                {% elif isi_slot > 4 %}
+                <input type="checkbox" name="id_meja" id="table" value="{{table.id}}" disabled />
+                {% endif %}
+                {% else %}
+                {% if isi_slot
+                <= 4 %} <input type="checkbox" class="checkoption" name="id_meja" id="table"
+                  onclick="checkedOnClick(this);" value="{{table.id}}" />
+                {% elif isi_slot > 4 %}
+                <input type="checkbox" name="id_meja" id="table" value="{{table.id}}" />
+                {% endif %}
+                {% endif %}
+                <label for="table">{{table.no_meja}}</label>
+                <img src="{{url_for('static', filename='assets/attr/' + table.tipe_meja)}}" alt="" sizes="20" srcset=""
+                  width="255" />
+
+                {% endfor %}
+
+
             </div>
+            <input type="date" name="tanggal" class="form-control" value="{{
+              request.form.tanggal }}" hidden />
+            <input type="time" name="jam_mulai" class="form-control" value="{{
+                request.form.jam_mulai }}" hidden />
+            <input type="number" name="isi_slot" id="people" class="form-control" value="{{
+                  request.form.isi_slot }}" hidden />
+            <br>
+
+            <div class="mb-3" id="emailForm">
+              <label for="email" class="form__label">Email:</label>
+              {% if 'user' in session %}
+              <input type="email" name="email" id="email" class="form-control" value="{{
+      session['user'] }}" />
+              {% else %}
+              <input type="email" name="email" id="email" class="form-control" value="{{
+      request.form.email }}" />
+              {% endif %}
+            </div>
+            <div class="mb-3" id="accountForm">
+              <label for="account" class="form__label">Account:</label>
+              <select name="id_pembayaran" id="account" class="form-control">
+                <option value="1">Debit</option>
+                <option value="2">Virtual Account</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit_prog">
+              Checkout
+            </button>
+            </form>
           </div>
         </div>
       </div>
